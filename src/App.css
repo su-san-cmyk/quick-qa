@@ -10,7 +10,9 @@
   --danger-bg: #fff5f5;
 }
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -19,6 +21,7 @@ body,
 #root {
   margin: 0;
   padding: 0;
+  min-width: 0;
   width: 100%;
   max-width: 100%;
   overflow-x: hidden;
@@ -47,7 +50,6 @@ body {
   border-radius: 12px;
   padding: 16px;
   margin-bottom: 16px;
-  box-sizing: border-box;
   overflow-wrap: break-word;
   word-break: break-word;
 }
@@ -63,14 +65,15 @@ body {
 }
 
 .input {
+  display: block;
   width: 100%;
   max-width: 100%;
+  min-width: 0;
   padding: 0.75rem;
   border: 1px solid #ccc;
   border-radius: 8px;
   font-size: 1rem;
   background: #fff;
-  box-sizing: border-box;
 }
 
 textarea.input {
@@ -87,7 +90,7 @@ textarea.input {
   font-size: 0.95rem;
   cursor: pointer;
   min-height: 44px;
-  box-sizing: border-box;
+  max-width: 100%;
 }
 
 .button:hover {
@@ -118,12 +121,15 @@ h4,
 h5,
 p {
   margin-top: 0;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 img,
 svg,
 canvas,
 video {
+  display: block;
   max-width: 100%;
   height: auto;
 }
@@ -144,10 +150,6 @@ select {
     padding: 12px;
     border-radius: 10px;
   }
-
-  .button {
-    width: 100%;
-  }
-}or: var(--border);
+}
   }
 }
