@@ -137,19 +137,54 @@ const Admin: React.FC<AdminProps> = ({ questions, onAdd, onUpdate, onDelete, onB
                                 <h5>回答フィールド</h5>
                                 {sq.fields.map((field) => (
                                     <div key={field.id} style={{ marginBottom: '1rem', paddingBottom: '1rem', borderBottom: '1px dashed #eee' }}>
-                                        <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
-                                            <div style={{ flex: 1 }}>
-                                                <label className="sub-label" style={{ fontSize: '0.8rem' }}>表示ラベル (例: 父)</label>
-                                                <input className="input" style={{ fontSize: '0.9rem', padding: '0.5rem' }} value={field.label} onChange={e => handleFieldChange(sq.id, field.id, 'label', e.target.value)} />
-                                            </div>
-                                            <div style={{ flex: 2 }}>
-                                                <label className="sub-label" style={{ fontSize: '0.8rem' }}>正解</label>
-                                                <textarea className="input" style={{ fontSize: '0.9rem', padding: '0.5rem' }} rows={2} value={field.correctAnswer} onChange={e => handleFieldChange(sq.id, field.id, 'correctAnswer', e.target.value)} />
-                                            </div>
-                                            {sq.fields.length > 1 && (
-                                                <button onClick={() => removeField(sq.id, field.id)} style={{ color: '#999', marginTop: '1.5rem' }}>✕</button>
-                                            )}
-                                        </div>
+                                       <div
+  style={{
+    display: 'flex',
+    gap: '1rem',
+    alignItems: 'flex-start',
+    flexWrap: 'wrap'
+  }}
+>
+  <div style={{ flex: 1, minWidth: '150px' }}>
+    <label className="sub-label" style={{ fontSize: '0.8rem' }}>
+      表示ラベル (例: 父)
+    </label>
+    <input
+      className="input"
+      style={{ fontSize: '0.9rem', padding: '0.5rem' }}
+      value={field.label}
+      onChange={e => handleFieldChange(sq.id, field.id, 'label', e.target.value)}
+    />
+  </div>
+
+  <div style={{ flex: 2, minWidth: '200px' }}>
+    <label className="sub-label" style={{ fontSize: '0.8rem' }}>
+      正解
+    </label>
+    <textarea
+      className="input"
+      style={{ fontSize: '0.9rem', padding: '0.5rem' }}
+      rows={2}
+      value={field.correctAnswer}
+      onChange={e =>
+        handleFieldChange(sq.id, field.id, 'correctAnswer', e.target.value)
+      }
+    />
+  </div>
+
+  {sq.fields.length > 1 && (
+    <button
+      onClick={() => removeField(sq.id, field.id)}
+      style={{
+        color: '#999',
+        marginTop: '1.5rem',
+        minWidth: '40px'
+      }}
+    >
+      ✕
+    </button>
+  )}
+</div>
                                     </div>
                                 ))}
                                 <button className="button button-secondary" style={{ fontSize: '0.8rem', padding: '0.3rem 1rem' }} onClick={() => addField(sq.id)}>回答フィールドを追加</button>
