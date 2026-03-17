@@ -137,8 +137,7 @@ const Admin: React.FC<AdminProps> = ({ questions, onAdd, onUpdate, onDelete, onB
                                 <h5>回答フィールド</h5>
                                 {sq.fields.map((field) => (
                                     <div key={field.id} style={{ marginBottom: '1rem', paddingBottom: '1rem', borderBottom: '1px dashed #eee' }}>
-                                       <div
-  style={{
+                                       <div style={{
     display: 'flex',
     gap: '1rem',
     alignItems: 'flex-start',
